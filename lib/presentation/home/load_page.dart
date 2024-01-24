@@ -7,9 +7,8 @@ class LoadData extends StatefulWidget {
   State<LoadData> createState() => _LoadDataState();
 }
 
-class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
-  int currentPageIndex = 0;
-  late final TabController _tabController;
+class _LoadDataState extends State<LoadData>  with TickerProviderStateMixin {
+    late final TabController _tabController;
 
   @override
   void initState() {
@@ -25,21 +24,30 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Carga'),
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: Colors.white,
         bottom: TabBar(
           controller: _tabController,
+          labelColor: Colors.white,
+          unselectedLabelColor: Color.fromARGB(255, 225, 166, 131),
           tabs: const [
             Tab(
-              icon: Icon(Icons.info),
+              icon: Icon(Icons.info, color: Colors.white),
               text: 'Informações',
+              
             ),
             Tab(
               icon: Icon(Icons.route),
               text: 'Rota',
             ),
           ],
+
+          indicatorColor: Colors.white,
         ),
       ),
 
@@ -50,7 +58,7 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
           // INFOS
           Center(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(40, 20, 60, 50),
+              padding: const EdgeInsets.fromLTRB(40, 20, 40, 50),
               child: Column(
                 children: [
                   //CNPJ
@@ -58,7 +66,7 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.business_rounded, color: Colors.green),
+                      Icon(Icons.business_rounded, color: Color(0xFF914C00)),
                       SizedBox(width: 8),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +90,7 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.person, color: Colors.green),
+                      Icon(Icons.person, color: Color(0xFF914C00)),
                       SizedBox(width: 8),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -106,7 +114,8 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.call_to_action_rounded, color: Colors.green),
+                      Icon(Icons.call_to_action_rounded,
+                          color: Color(0xFF914C00)),
                       SizedBox(width: 8),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -130,7 +139,8 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.location_on_outlined, color: Colors.green),
+                      Icon(Icons.location_on_outlined,
+                          color: Color(0xFF914C00)),
                       SizedBox(width: 8),
                       Expanded(
                         child: Column(
@@ -157,7 +167,7 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.my_location_sharp, color: Colors.green),
+                      Icon(Icons.my_location_sharp, color: Color(0xFF914C00)),
                       SizedBox(width: 8),
                       Expanded(
                         child: Column(
@@ -187,7 +197,7 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.speed_rounded, color: Colors.green),
+                          Icon(Icons.speed_rounded, color: Color(0xFF914C00)),
                           SizedBox(width: 8),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -211,7 +221,7 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.speed_rounded, color: Colors.green),
+                          Icon(Icons.speed_rounded, color: Color(0xFF914C00)),
                           SizedBox(width: 8),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -235,13 +245,13 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                   const SizedBox(height: 14),
                   // ENTREGA / STATUS
                   const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.delivery_dining, color: Colors.green),
+                          Icon(Icons.delivery_dining, color: Color(0xFF914C00)),
                           SizedBox(width: 8),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -260,11 +270,12 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                           )
                         ],
                       ),
+                      SizedBox(width: 16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.warning_amber, color: Colors.yellow),
+                          Icon(Icons.warning_amber, color: Color(0xFFEA9800)),
                           SizedBox(width: 8),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -285,16 +296,25 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 25),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/adicionarRota');
-                      },
-                      child: const Text(
-                        'Gerar comprovante',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ))
+                  const SizedBox(height: 30),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/adicionarRota');
+                        },
+                        style: const ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Color(0xFF914C00)),
+                            foregroundColor:
+                                MaterialStatePropertyAll(Colors.white)),
+                        child: const Text(
+                          'Gerar comprovante',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        )),
+                  )
                 ],
               ),
             ),
@@ -303,23 +323,6 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
           const Center(
             child: Text("Rotas"),
           ),
-        ],
-      ),
-
-      //BOTTOM NAVIGATION
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        indicatorColor: Colors.green,
-        selectedIndex: currentPageIndex,
-        destinations: const [
-          NavigationDestination(
-              icon: Icon(Icons.business_center), label: 'Empresa'),
-          NavigationDestination(icon: Icon(Icons.fire_truck), label: 'Carga'),
-          NavigationDestination(icon: Icon(Icons.payment), label: 'Pagamento'),
         ],
       ),
     );

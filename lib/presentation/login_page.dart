@@ -71,8 +71,8 @@ class _LoginPageState extends State<LoginPage> {
                       end: Alignment.bottomRight,
                       stops: [0.3, 1],
                       colors: [
-                        Color(0xFFC78853),
-                        Color(0xFFC78853),
+                        Color(0xFF914C00),
+                        Color(0xFF914C00),
                       ],
                     ),
                     borderRadius: BorderRadius.all(
@@ -98,19 +98,19 @@ class _LoginPageState extends State<LoginPage> {
                       // Provider.of<AuthProvider>(context, listen: false)
                       //     .authenticate('root@engetech.com', ?'password');
                       // Navigator.pushReplacementNamed(context, '/selectProject');
-                      Navigator.pushNamed(context, '/dadosDaCarga');
+                      Navigator.pushNamed(context, '/homepage');
                     },
                   ),
                 ),
               ),
               const SizedBox(height: 40),
               const Text(
-                "Fale conosco!",
+                "Recuperar acesso",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
-                  color: Color(0xFF864622),
+                  color: Color(0xFF914C00),
                 ),
               ),
             ],
