@@ -10,8 +10,25 @@ class PaymentPage extends StatefulWidget {
 class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Scaffold(
-      body: Center(child: Text('Payment')),
+      appBar: AppBar(
+        title: const Text('Pagamentos'),
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: Colors.white,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 350,
+              child: Image.asset('images/not-found.png'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

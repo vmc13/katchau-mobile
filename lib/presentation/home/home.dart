@@ -10,8 +10,32 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Scaffold(
-      body: Center(child: Text('Home')),
+      appBar: AppBar(
+        title: const Text('Home'),
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: Colors.white,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 350,
+              child: Image.asset('images/not-found.png'),
+            ),
+            // Text(
+            //   'We are working on this page.',
+            //   style: TextStyle(
+            //       color: theme.colorScheme.primary,
+            //       fontSize: 20,
+            //       fontWeight: FontWeight.w600),
+            // )
+          ],
+        ),
+      ),
     );
   }
 }
