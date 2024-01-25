@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:katchau_mobile/presentation/home/business_page.dart';
+import 'package:katchau_mobile/presentation/home/generate_receipt.dart';
 import 'package:katchau_mobile/presentation/home/home.dart';
 import 'package:katchau_mobile/presentation/home/load_page.dart';
 import 'package:katchau_mobile/presentation/home/payment_page.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/loadData':(context) => const LoadData(),
         '/business':(context) => const BusinessPage(),
         '/payment':(context) => const PaymentPage(),
+        '/receipt':(context) => const GenerateReceipt(),
       },
     );
   }

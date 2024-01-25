@@ -17,6 +17,7 @@ class _PaymentPageState extends State<PaymentPage> {
         title: const Text('Pagamentos'),
         backgroundColor: theme.colorScheme.primary,
         foregroundColor: Colors.white,
+        centerTitle: true,
       ),
       body: Center(
         child: Column(

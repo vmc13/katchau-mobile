@@ -39,7 +39,11 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Carga'),
+        title: const Text(
+          'Carga',
+          //style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
         backgroundColor: theme.colorScheme.primary,
         foregroundColor: Colors.white,
         bottom: TabBar(
@@ -365,7 +369,7 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                     height: 50,
                     child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/adicionarRota');
+                          Navigator.pushNamed(context, '/receipt');
                         },
                         style: const ButtonStyle(
                             backgroundColor:
@@ -393,12 +397,22 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                   target: _center,
                   zoom: 18.0,
                 ),
+                markers: {
+                  const Marker(
+                    markerId: MarkerId("Carga"),
+                    position: LatLng(-20.53021903991448, -47.4226164154784),
+                    infoWindow: InfoWindow(
+                      title: "NF: 000123456",
+                      snippet: "Centro logístico de Praia Grande - SP",
+                    ),
+                  ), // Marker
+                },
               ),
               Positioned(
-                top: 400,
+                top: 380,
                 child: Container(
                   width: 390,
-                  height: 300,
+                  height: 350,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 241, 221, 197),
@@ -440,7 +454,16 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                               ),
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                final snackBar = SnackBar(
+                                  content:
+                                      const Text("Código copiado com sucesso!"),
+                                  action: SnackBarAction(
+                                      label: "Fehcar", onPressed: () {}),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
                               style: const ButtonStyle(
                                   backgroundColor: MaterialStatePropertyAll(
                                       Color(0xFF914C00)),
@@ -462,69 +485,138 @@ class _LoadDataState extends State<LoadData> with TickerProviderStateMixin {
                           color: Color(0xFF914C00),
                         ),
                         const SizedBox(height: 10),
-                        const Row(
-                          children: [
-                            Column(
+                        ListView(
+                          shrinkWrap: true,
+                          children: const [
+                            Row(
                               children: [
-                                Text(
-                                  "20/01",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF383330)),
+                                Column(
+                                  children: [
+                                    Text(
+                                      "20/01",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF383330)),
+                                    ),
+                                    Text(
+                                      "11:32",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF383330)),
+                                    )
+                                  ],
                                 ),
-                                Text(
-                                  "11:32",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF383330)),
-                                )
+                                SizedBox(width: 10),
+                                Icon(
+                                  Icons.my_location_outlined,
+                                  color: Color(0xFF914C00),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                    child: Text(
+                                  "Pedido chegou ao centro logístico: Praia Grande - SP",
+                                  overflow: TextOverflow.clip,
+                                ))
                               ],
                             ),
-                            SizedBox(width: 10),
-                            Icon(
-                              Icons.my_location_outlined,
-                              color: Color(0xFF914C00),
-                            ),
-                            SizedBox(width: 10),
-                            Expanded(
-                                child: Text(
-                              "Pedido chegou ao centro logístico: Praia Grande - SP",
-                              overflow: TextOverflow.clip,
-                            ))
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        const Row(
-                          children: [
-                            Column(
+                            SizedBox(height: 20),
+                            Row(
                               children: [
-                                Text(
-                                  "18/01",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF383330)),
+                                Column(
+                                  children: [
+                                    Text(
+                                      "18/01",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF383330)),
+                                    ),
+                                    Text(
+                                      "09:07",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF383330)),
+                                    )
+                                  ],
                                 ),
-                                Text(
-                                  "09:07",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF383330)),
-                                )
+                                SizedBox(width: 10),
+                                Icon(
+                                  Icons.local_shipping_rounded,
+                                  color: Color(0xFF914C00),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                    child: Text(
+                                  "Pedido saiu do centro logístico",
+                                  overflow: TextOverflow.clip,
+                                ))
                               ],
                             ),
-                            SizedBox(width: 10),
-                            Icon(
-                              Icons.local_shipping_rounded,
-                              color: Color(0xFF914C00),
+                            SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Text(
+                                      "14/01",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF383330)),
+                                    ),
+                                    Text(
+                                      "10:50",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF383330)),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(width: 10),
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  color: Color(0xFF914C00),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                    child: Text(
+                                  "Pedido chegou no centro logístico: Santo Agostinho - PE",
+                                  overflow: TextOverflow.clip,
+                                ))
+                              ],
                             ),
-                            SizedBox(width: 10),
-                            Expanded(
-                                child: Text(
-                              "Pedido saiu do centro logístico",
-                              overflow: TextOverflow.clip,
-                            ))
+                            SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Text(
+                                      "18/01",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF383330)),
+                                    ),
+                                    Text(
+                                      "09:07",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF383330)),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(width: 10),
+                                Icon(
+                                  Icons.local_shipping_rounded,
+                                  color: Color(0xFF914C00),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                    child: Text(
+                                  "Pedido saiu do centro logístico",
+                                  overflow: TextOverflow.clip,
+                                ))
+                              ],
+                            ),
                           ],
-                        ),
+                        )
                       ],
                     ),
                   ),

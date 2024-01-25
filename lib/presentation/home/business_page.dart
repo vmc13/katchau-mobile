@@ -16,6 +16,7 @@ class _BusinessPageState extends State<BusinessPage> {
       appBar: AppBar(
         title: const Text('Empresa'),
         backgroundColor: theme.colorScheme.primary,
+        centerTitle: true,
         foregroundColor: Colors.white,
       ),
       body: Center(
